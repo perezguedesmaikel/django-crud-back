@@ -1,14 +1,10 @@
-from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView
+
+from rest_framework.viewsets import ModelViewSet
 
 from .serializers import ProductoSerializer
 from .models import Producto
 
 
-class ProductoDetailView(RetrieveUpdateDestroyAPIView):
-    serializer_class = ProductoSerializer
-    queryset = Producto.objects.all()
-
-
-class ProductoListCreateView(ListCreateAPIView):
+class ProductCrud(ModelViewSet):
     serializer_class = ProductoSerializer
     queryset = Producto.objects.all()

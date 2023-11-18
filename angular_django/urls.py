@@ -16,11 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myCrub.views import ProductoListCreateView, ProductoDetailView
+from django.urls import include
+from myCrub.views import ProductCrud
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'productos', ProductCrud)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('productos/', ProductoListCreateView.as_view(), name='producto-list-create'),
-    path('productos/<int:pk>/', ProductoDetailView.as_view(), name='producto-detail'),
+    path('', include(router.urls)),
+    # path('productos/<int:pk>/', ProductoDetailView.as_view(), name='producto-detail'),
 
 ]
