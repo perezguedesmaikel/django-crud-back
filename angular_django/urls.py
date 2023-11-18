@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myCrub.views import ProductoCreateView
+from myCrub.views import ProductoListCreateView, ProductoDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('producto/new/', ProductoCreateView.as_view(), name='producto_create'),
+    path('productos/', ProductoListCreateView.as_view(), name='producto-list-create'),
+    path('productos/<int:pk>/', ProductoDetailView.as_view(), name='producto-detail'),
 
 ]
